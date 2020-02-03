@@ -29,7 +29,7 @@ sudo apt install raspotify alsa-utils
 
 Configure params for raspotify in `/etc/default/raspotify`. I use a good USB sound card, as the built-in sound card on the bananapi is very bad.
 
-Get your device number with `aplay -l`. The syntax beneath is `--device hw:<card>,<device>`:
+Get your device number with `sudo aplay -l`. The syntax beneath is `--device hw:<card>,<device>`:
 
 ```bash
 DEVICE_NAME="BananaPi"
@@ -48,6 +48,8 @@ And connect your device!
 
 If you have problems getting sound working, see [here](https://dtcooper.github.io/raspotify/#troubleshooting), [here](https://github.com/librespot-org/librespot/wiki/Audio-Backends#alsa) or even [here](https://github.com/dtcooper/raspotify/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+sound)
 
+![spotify connect android screenshot](https://gist.githubusercontent.com/chrisongthb/a0d2b0a60e33af6864274f9849d938fb/raw/2f89a27a24010278ace1e16160a81fb26ac7793e/spotify_connect.jpg "spotify connect android")
+
 
 ### Configure your mouse as media remote
 
@@ -63,6 +65,10 @@ sudo systemctl enable gpm
 ```
 
 Now you're done!
+
+![picture of remote control mouse](https://gist.githubusercontent.com/chrisongthb/a0d2b0a60e33af6864274f9849d938fb/raw/ee29e0aea219a33354594bc9a26ee3c41922b727/mouse_remote.jpg "mouse remote control")
+
+
 
 Maybe you want to...
 
