@@ -1,0 +1,17 @@
+[Unit]
+Description=Control spotify with mouse buttons
+Conflicts=shutdown.target
+Wants=gpm.service
+After=gpm.service
+StartLimitInterval=25
+StartLimitBurst=3
+
+[Service]
+Type=simple
+PrivateTmp=true
+ExecStart=/usr/local/sbin/gpm_spotify_media_control
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

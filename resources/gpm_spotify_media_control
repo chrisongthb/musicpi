@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# caught from:
+# http://positon.org/listen-to-mouse-events-in-linux-text-mode
+
+# mouse wheels events are not supported by gpm
+
+# unset TERM variable, otherwise mev refuses to start when detecting xterm
+unset TERM
+
+sleep 5
+
+echo "Listening to mouse events..."
+
+# we use script to fake a tty for mev
+script -qc "mev -E" /dev/null </dev/null | grep --line-buffered 'down-mouse' | while read LINE; do
+
+  # uncomment for debugging
+  # echo "EVENT: $LINE"
+
+  if grep -q 'down-mouse-1' <<< "${LINE}"; then
+    echo vol down
+    amixer set Master 1db-
+  elif grep -q '(down-mouse-2' <<< "${LINE}"; then  # with ( to avoid double-down-mouse-2 and triple...
+    echo 'stop playback (restart raspotify)'
+    systemctl restart raspotify.service
+    amixer set Master -- -72dB
+  elif grep -q 'down-mouse-3' <<< "${LINE}"; then
+    echo vol up
+    amixer set Master 1db+
+  fi
+
+done
