@@ -56,8 +56,8 @@ If you have problems getting sound working, see [here](https://dtcooper.github.i
 First we plug a mouse to your pi. Then we need to install the stone-age software [gpm](https://wiki.archlinux.org/index.php/General_purpose_mouse) and setup the event listener. Mind, that we cannot parse mouse wheel events with gpm (wheel up + down have the same event IDs). The left button will lower the volume, the right one raises the volume. The middle click (on the mouse wheel) will stop the playback (restart raspotify).
 ```
 sudo apt install gpm
-sudo curl -o /usr/local/sbin/gpm_spotify_media_control https://github.com/chrisongthb/musicpi/blob/master/resources/gpm_spotify_media_control
-sudo curl -o /etc/systemd/system/gpm_spotify_media_control.service https://github.com/chrisongthb/musicpi/blob/master/resources/gpm_spotify_media_control.service
+sudo curl -o /usr/local/sbin/gpm_spotify_media_control https://raw.githubusercontent.com/chrisongthb/musicpi/master/resources/gpm_spotify_media_control
+sudo curl -o /etc/systemd/system/gpm_spotify_media_control.service https://raw.githubusercontent.com/chrisongthb/musicpi/master/resources/gpm_spotify_media_control.service
 sudo systemctl daemon-reload
 sudo systemctl enable gpm_spotify_media_control.service
 sudo systemctl start gpm_spotify_media_control.service
